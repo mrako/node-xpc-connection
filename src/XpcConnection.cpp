@@ -140,7 +140,7 @@ xpc_object_t XpcConnection::ObjectToXpcObject(Local<Object> object) {
     if (propertyName->IsString()) {
       Nan::Utf8String propertyNameString(propertyName);
 
-      Local<Value> propertyValue = object->GetRealNamedProperty(propertyName->ToString(), NULL);
+      Local<Value> propertyValue = object->GetRealNamedProperty(propertyName->ToString(), propertyName->ToString());
 
       xpc_object_t xpcValue = XpcConnection::ValueToXpcObject(propertyValue);
       xpc_dictionary_set_value(xpcObject, *propertyNameString, xpcValue);
